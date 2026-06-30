@@ -78,7 +78,7 @@ Don't forget to place the link of where to buy each component inside the quotati
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
-| Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
+| Raspberry PI 4 Kit | What the item is used for | $148.99 | <a href="[https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/](https://www.amazon.com/RasTech-Raspberry-Starter-Heatsink-Screwdriver/dp/B0C8LV6VNZ/ref=sr_1_1?crid=2454KC70JASX7&dib=eyJ2IjoiMSJ9.K9uYbZ89dSGaSC_vJVVn_gSMB_2K_t0Zmmay-i6VDhvUfs0YQUoIt02ea2cnBhUy5MOcyKrMolJt2Y_dEMG7Xyq8MAdT9FDe5RRD3Rhjq-Z3EKg36QWi9M2AKafmTrwGmbxfbVuwFjkjwQrkryoCvWcSbeTtXW2llkUD6sSi182vxFjX1MX3pD4FS7TwoYTL3CfXhm-G-dUNQulLNuuHx44zelW2oS0ctFeb-g7n78c.04CbwfKk7SmNoTBQfiJC3X1_7s4zBIeBZAHkHsObO8w&dib_tag=se&keywords=raspberry%2Bpi%2B4%2Brastech&qid=1782846712&sprefix=raspberry%2Bpi%2B4%2Brastech%2Caps%2C186&sr=8-1&th=1)"> Link </a> |
 | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 | Item Name | What the item is used for | $Price | <a href="https://www.amazon.com/Arduino-A000066-ARDUINO-UNO-R3/dp/B008GRTSV6/"> Link </a> |
 
