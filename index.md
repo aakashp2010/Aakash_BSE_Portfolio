@@ -43,26 +43,36 @@ For your second milestone, explain what you've worked on since your previous mil
 
 # First Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_1QczBJIH1c?si=EaZqRpuG1uguBnfq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
- 
-  **Technical Progress**
-**Setting Up the Raspberry Pi**
+
+<h2>Technical Progress</h2>
+
+<h3>Setting Up the Raspberry Pi</h3>
+<p>
 I started by setting up the Raspberry Pi and installing Raspberry Pi OS. After connecting to the Raspberry Pi, I downloaded and configured all of the software and libraries needed for the project, including the camera libraries required for the Raspberry Pi Camera Module. I also created a project folder and wrote my code using VS Code.
+</p>
 
-**Camera Module**
+<h3>Camera Module</h3>
+<p>
 The Raspberry Pi Camera Module connects directly to the Raspberry Pi through the CSI camera connector. After enabling the camera software and installing the correct libraries, I tested the camera by taking pictures and recording videos. Once the camera was working, I integrated it into my motion detection program so it would automatically begin recording when motion was detected.
+</p>
 
-**PIR Motion Sensor**
+<h3>PIR Motion Sensor</h3>
+<p>
 The Passive Infrared (PIR) motion sensor is connected to the Raspberry Pi through its GPIO pins. The sensor detects changes in infrared radiation caused by movement and sends a HIGH signal to the Raspberry Pi when motion is detected. My program monitors this signal and starts recording with the camera. When motion stops, the program waits five seconds before ending the recording.
+</p>
 
-**Challenges**
+<h2>Challenges</h2>
+
+<p>
 One of the biggest challenges I encountered was that the Raspberry Pi would not recognize the camera. After troubleshooting, I found that the required camera library had not been installed, preventing the camera from connecting properly. Another challenge was that the PIR sensor was wired incorrectly, causing it to continuously report motion even when nothing was moving. I also had an issue where recorded videos were not being saved correctly. By checking the hardware connections, installing the correct software, and debugging my code, I was able to solve each of these problems and complete the base project.
+</p>
 
-**Next Steps**
+<h2>Next Steps</h2>
+
+<p>
 For my next milestone, I plan to add two servo motors that will allow both the camera and the PIR sensor to rotate and follow a moving person. Instead of recording only within a fixed field of view, the system will be able to track movement as it occurs. After integrating the servo motors with the existing hardware and software, I will continue testing and refining the system to improve its accuracy and reliability.
-
+</p>
 
 # Schematics 
 Here's where you'll put images of your schematics. [Tinkercad](https://www.tinkercad.com/blog/official-guide-to-tinkercad-circuits) and [Fritzing](https://fritzing.org/learning/) are both great resoruces to create professional schematic diagrams, though BSE recommends Tinkercad becuase it can be done easily and for free in the browser. 
