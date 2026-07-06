@@ -1,9 +1,9 @@
 # Motion Activated Camera
-Replace this text with a brief description (2-3 sentences) of your project. This description should draw the reader in and make them interested in what you've built. You can include what the biggest challenges, takeaways, and triumphs from completing the project were. As you complete your portfolio, remember your audience is less familiar than you are with all that your project entails!
+For my BlueStamp Engineering project, I built a motion-activated camera system using a Raspberry Pi, a PIR (Passive Infrared) motion sensor, and a camera module that automatically records whenever movement is detected. One of the biggest challenges was troubleshooting hardware and software issues, including camera connectivity, sensor wiring, and video saving, but solving these problems taught me valuable debugging and engineering skills.
 
 | **Engineer** | **School** | **Area of Interest** | **Grade** |
 |:--:|:--:|:--:|:--:|
-| Aakash P. | Woodbridge | Chemical Engineering | Incoming Junior
+| Aakash P. | Woodbridge High | Chemical Engineering | Incoming Junior
 
 **Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
 
@@ -75,17 +75,37 @@ For my next milestone, I plan to add two servo motors that will allow both the c
 # Code
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
-```c++
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  Serial.println("Hello World!");
-}
+```python
+from gpiozero import MotionSensor
+from picamzero import Camera
+from datetime import datetime
+import time
 
-void loop() {
-  // put your main code here, to run repeatedly:
+pir = MotionSensor(27)
+cam = Camera()
 
-}
+print("Ready!")
+
+while True:
+    time.sleep(3)
+    pir.wait_for_motion()
+    print("Motion detected!")
+    
+    # 1. Generate a brand NEW unique filename with the exact timestamp
+    current_time = datetime.now()
+    filename = f"{current_time:%Y-%m-%d_%H-%M-%S}"
+    
+    # 2. Start recording to this unique file
+    cam.start_recording(filename)
+    
+    # 3. Wait for them to stop moving, THEN record for an extra 5 seconds
+    pir.wait_for_no_motion()
+    print("Motion stopped. Recording 5 more seconds.")
+    time.sleep(5)
+    
+    # 4. Safely close and seal the video file
+    cam.stop_recording()
+    print(f"Video saved successfully as {filename}.mp4")
 ```
 
 # Bill of Materials
