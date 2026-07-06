@@ -49,23 +49,23 @@ For your second milestone, explain what you've worked on since your previous mil
 
 <h3>Setting Up the Raspberry Pi</h3>
 <p>
-I started by setting up the Raspberry Pi and installing Raspberry Pi OS. After connecting to the Raspberry Pi, I downloaded and configured all of the software and libraries needed for the project, including the camera libraries required for the Raspberry Pi Camera Module. I also created a project folder and wrote my code using VS Code.
+I started by setting up the Raspberry Pi and installing Raspberry Pi OS. After connecting to the Raspberry Pi, I downloaded and configured all of the software and libraries needed for the project, including the camera libraries required for the Raspberry Pi Camera Module. To remotely access my Raspberry Pi, I used a software called RealVNC Viewer.
 </p>
 
 <h3>Camera Module</h3>
 <p>
-The Raspberry Pi Camera Module connects directly to the Raspberry Pi through the CSI camera connector. After enabling the camera software and installing the correct libraries, I tested the camera by taking pictures and recording videos. Once the camera was working, I integrated it into my motion detection program so it would automatically begin recording when motion was detected.
+The Raspberry Pi Camera Module connects directly to the Raspberry Pi through a white cable. After enabling the camera software and installing the correct libraries, I tested the camera by recording videos. Once the camera was working, I integrated it into my motion detection program so it would automatically begin recording when motion was detected.
 </p>
 
 <h3>PIR Motion Sensor</h3>
 <p>
-The Passive Infrared (PIR) motion sensor is connected to the Raspberry Pi through its GPIO pins. The sensor detects changes in infrared radiation caused by movement and sends a HIGH signal to the Raspberry Pi when motion is detected. My program monitors this signal and starts recording with the camera. When motion stops, the program waits five seconds before ending the recording.
+The Passive Infrared (PIR) motion sensor is connected to the Raspberry Pi through its GPIO pins. The sensor detects changes in infrared radiation caused by movement and sends a signal to the Raspberry Pi when motion is detected. My program monitors this signal and starts recording with the camera. When motion stops, the program waits five seconds before ending the recording.
 </p>
 
 <h2>Challenges</h2>
 
 <p>
-One of the biggest challenges I encountered was that the Raspberry Pi would not recognize the camera. After troubleshooting, I found that the required camera library had not been installed, preventing the camera from connecting properly. Another challenge was that the PIR sensor was wired incorrectly, causing it to continuously report motion even when nothing was moving. I also had an issue where recorded videos were not being saved correctly. By checking the hardware connections, installing the correct software, and debugging my code, I was able to solve each of these problems and complete the base project.
+One of the biggest challenges I encountered was that the Raspberry Pi would not recognize the camera. After troubleshooting, I found that the required camera library had not been installed, preventing the camera from connecting properly. Another challenge was that the PIR sensor was wired incorrectly, causing it to continuously report motion even when nothing was moving. By checking the hardware connections, installing the correct software, and debugging my code, I was able to solve these problems and sucessfully complete my base project.
 </p>
 
 <h2>Next Steps</h2>
