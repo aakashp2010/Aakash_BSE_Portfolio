@@ -70,7 +70,7 @@ For my next milestone, I plan to add two servo motors that will allow both the c
 
 # Schematics 
 
-<img src="circuit_diagram.png" alt="Circuit Schematics">
+<img src="ver3.png" alt="Circuit Schematics">
 
 # Code
 Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
