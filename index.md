@@ -5,8 +5,6 @@ For my BlueStamp Engineering project, I built a motion-activated camera system u
 |:--:|:--:|:--:|:--:|
 | Aakash P. | Woodbridge High | Chemical Engineering | Incoming Junior
 
-**Replace the BlueStamp logo below with an image of yourself and your completed project. Follow the guide [here](https://tomcam.github.io/least-github-pages/adding-images-github-pages-site.html) if you need help.**
-
 ![Headstone Image](logo.svg)
   
 # Final Milestone
@@ -25,15 +23,27 @@ For your final milestone, explain the outcome of your project. Key details to in
 
 # Second Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y3VAmNlER5Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-For your second milestone, explain what you've worked on since your previous milestone. You can highlight:
-- Technical details of what you've accomplished and how they contribute to the final goal
-- What has been surprising about the project so far
-- Previous challenges you faced that you overcame
-- What needs to be completed before your final milestone 
+<h2>Technical Progress</h2>
+
+<h3>Pan-Tilt Bracket and Servo Motors</h3>
+<p>
+For my second milestone, I added a pan-tilt bracket with two servo motors to control the orientation of the camera. The two servo motors allow the camera to rotate horizontally and vertically, giving it a much wider field of view than before. I programmed the system so that pressing the arrow keys moves the servo motors, allowing the camera to be manually positioned in different directions. This is an important step toward the final goal because it provides the hardware and software needed for the camera to automatically track moving objects.
+</p>
+
+<h2>Challenges</h2>
+
+<p>
+The biggest challenge I faced during this milestone was getting the servo motor demo to run correctly. Initially, my computer could not locate the required demo files, so I was unable to test the pan-tilt bracket. After spending time troubleshooting, I discovered that my computer had named the test file <code>run_servo</code>, while the instructions referred to it as <code>RunServoDemo</code>. Once I identified the correct file, I was able to successfully run the demo, verify that both servo motors were working properly, and continue integrating them into my project. This experience showed me how small differences in file names can create unexpected problems during development.
+</p>
+
+<h2>Next Steps</h2>
+
+<p>
+For my final milestone, I plan to program the camera so it can automatically detect and track intruders instead of relying on manual controls. This will require implementing motion detection to identify when an object enters the camera's view and determining the direction it is moving. The software will then control the two servo motors to continuously reposition the camera so it follows the moving object while recording. Once this functionality is complete, I will continue testing and refining the tracking system to improve its accuracy, responsiveness, and overall reliability.
+</p>
+
 
 # First Milestone
 
@@ -109,8 +119,6 @@ while True:
 ```
 
 # Bill of Materials
-Here's where you'll list the parts in your project. To add more rows, just copy and paste the example rows below.
-Don't forget to place the link of where to buy each component inside the quotation marks in the corresponding row after href =. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize this to your project needs. 
 
 | **Part** | **Note** | **Price** | **Link** |
 |:--:|:--:|:--:|:--:|
@@ -118,11 +126,10 @@ Don't forget to place the link of where to buy each component inside the quotati
 | Electronice Fun Kit | Electronics | $15.99 | <a href="https://www.amazon.com/BOJACK-Electronics-Potentiometer-tie-Points-Breadboard/dp/B099MQV8ZW/ref=sr_1_3?crid=24D0BJ9GV5RVC&dib=eyJ2IjoiMSJ9.vwmDmowVlgaQ04Sl7p19oPnaT4Mk-Fp6-UvLCYTsR1kGQk12r4Iv6QPTMR8UQBbI-dRQLrZzBBC0mMcf-4GNrdN1DfY3QVCZ3e_1Xqn6SaWx1KYqdK27pmTP895Rq1L_GMCAK6nmXlxQIp591aCNcXSnFhyFV18kXKEB3CjglIcwhggemsdzzTpMHClN_5Lde8wgCipRX4WeBMJg8fXwynnLRg9Ao_iT9dnS66OOopg.186F3X-zATFbUcDdO042XYoT1Q3-nx9_SUZF5hEJbYQ&dib_tag=se&keywords=bojack+electronice+fun+kit&qid=1782847087&sprefix=bojack+electronice+fun+kit%2Caps%2C190&sr=8-3"> Link </a> |
 | PIR Sensor | Infared Motion Sensor | $8.49 | <a href="https://www.amazon.com/HiLetgo-HC-SR501-Infrared-Sensor-Arduino/dp/B07KZW86YR/ref=sr_1_1?crid=3EDNVSHT2AX4T&dib=eyJ2IjoiMSJ9.TR4qEZq53NyS78IwE9mqddHGYsJpQINtJ5Mp7mHH-p0ogvqw8dzbdrj0Tjshri_IW1cZqttenHbS5IE79SdVn4pWAdYFRKwZpGnQdLC164Cfp9fknPbYp0yHtH0NtrCw763XTR-QnDJSuiTUJF3r8MDwxoPhob6w26zFqhR-8pd7rTpRFSFiKh-TaQs-8a_i7w3_YTobc9hfIj55S8RsIeCKCRUuwz7xLZBPLjO9WnU.8VKpeTKqlS4t3npzHqBmIpHJ53cIlyRCkibriXDRvL8&dib_tag=se&keywords=hiletgo+3pcs+hc+sr501+pir+infrared+ir+sensor&nsdOptOutParam=true&qid=1782847220&sprefix=hiletgo+3pcs+hc+sr501+pir+infared+ir+sensor%2Caps%2C220&sr=8-1"> Link </a> |
 | Camera Module | Recording Module | $6.99 | <a href="https://www.amazon.com/Arducam-Megapixels-Sensor-OV5647-Raspberry/dp/B012V1HEP4/ref=sr_1_2?crid=1KTBK7ZWQF4UV&dib=eyJ2IjoiMSJ9.6WrYADCMjOY9gW5mqaDlpOzGKbxS4R3uAvvyumgwJMki2J7_2Kx-yMoRddNQfUbQY6XY39xVwNq6SVXAwQ8s1WDmvXlM_30n1mIQQmgdlMfYkoV_4y1-Fy0fX9bFbLAHvniKkXHd3r8g1VH_SCLxhUF6vtPXTDlR01PgTlIj_VbthWrJIntW_iPXtEbksoQb0cwDCyfy5ddnI58CgMXYvWKq3jyaAEvfxz-aGYe-qQc.a1w9dUyu-Fl6RzjX86nPv5URDjr5aL88wLpW-9aCalY&dib_tag=se&keywords=raspberry%2Bpi%2BCamera%2Bmodule%2Bsunny&qid=1782847539&sprefix=raspberry%2Bpi%2Bcamera%2Bmodule%2Bsunny%2Caps%2C183&sr=8-2&th=1"> Link </a> |
+| Pan-Tilt Bracket | Servo Motors and Bracket | $26.99 | <a href="https://www.amazon.com/Arducam-Upgraded-Camera-Platform-Raspberry/dp/B08PK9N9T4/ref=sr_1_1?crid=3AH05G5JEZN77&dib=eyJ2IjoiMSJ9.B5mD8rF26ZHdnP0N63uXR4XYalhMxdjRy_J9_J16YwXNiaD4dkaC_etKz39i84S6oiyfOuGkeOLN1Ct1XZJR46vrlKK7-bM88yAl_CjQ94H5r68115kxJzNCFtKZJipMdLkqgKXdc1ydbKJrCHBjTFEq8Zy1W0rr9hTuP5nEjwT1nCIaRMsl6b3SoE0rF0iN1Lx-B04S2cKLURzMCAeZ4RBnYdf97sJTvRw_fZJAvhc.TFPe9H7krCP6TBd0Zbox1exYFoL6gT33sOOFjSb9xT8&dib_tag=se&keywords=arducam+pan+tilt&qid=1783715395&sprefix=arducam+pan+til%2Caps%2C430&sr=8-1"> Link </a> |
 
 # Other Resources/Examples
 One of the best parts about Github is that you can view how other people set up their own work. Here are some past BSE portfolios that are awesome examples. You can view how they set up their portfolio, and you can view their index.md files to understand how they implemented different portfolio components.
 - [Example 1](https://trashytuber.github.io/YimingJiaBlueStamp/)
 - [Example 2](https://sviatil0.github.io/Sviatoslav_BSE/)
 - [Example 3](https://arneshkumar.github.io/arneshbluestamp/)
-
-To watch the BSE tutorial on how to create a portfolio, click here.
