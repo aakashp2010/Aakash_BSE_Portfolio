@@ -5,7 +5,7 @@ For my BlueStamp Engineering project, I built a motion-activated camera system u
 |:--:|:--:|:--:|:--:|
 | Aakash P. | Woodbridge High | Chemical Engineering | Incoming Junior
 
-![Headstone Image](logo.svg)
+![Headstone Image](Camera-logo.jpg)
   
 # Final Milestone
 
