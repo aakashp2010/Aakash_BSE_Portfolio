@@ -9,17 +9,32 @@ For my BlueStamp Engineering project, I built a motion-activated camera system u
   
 # Final Milestone
 
-**Don't forget to replace the text below with the embedding for your milestone video. Go to Youtube, click Share -> Embed, and copy and paste the code to replace what's below.**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/G_ydeh9DDFs?si=zOQod47pE0y5_P5U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/F7M7imOVGug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<h2>Technical Progress</h2>
 
-For your final milestone, explain the outcome of your project. Key details to include are:
-- What you've accomplished since your previous milestone
-- What your biggest challenges and triumphs were at BSE
-- A summary of key topics you learned about
-- What you hope to learn in the future after everything you've learned at BSE
+<h3>Automatic Motion Tracking</h3>
+<p>
+For my final milestone, I did not make any major hardware changes from the previous milestone. Instead, I focused on improving the software so the camera could automatically follow motion. Previously, the camera's position was controlled manually using the arrow keys. After modifying the code, the system can now detect movement and automatically adjust the pan-tilt bracket to keep the moving object within the camera's field of view. This completed the primary goal of creating a motion-activated camera that can actively track movement without requiring user input.
+</p>
 
+<h2>Challenges and Triumphs</h2>
 
+<p>
+The biggest challenge during this milestone was getting the camera to accurately follow motion. This was difficult for several reasons. First, I could not rely on my previous code because the system needed computer vision software to determine where an object was located within the camera's view. Second, the camera frequently became stuck in an infinite loop. When the camera detected motion and moved to follow it, the movement of the camera itself caused the entire image to shift, which the system interpreted as new motion and caused it to move back again. After spending a significant amount of time debugging and testing different solutions, I successfully resolved these issues and got the camera to reliably track detected motion. Completing this feature was the biggest triumph of my project because it brought together all of the hardware and software components into a fully functioning system.
+</p>
+
+<h2>Key Topics Learned</h2>
+
+<p>
+Throughout my BlueStamp Engineering project, I learned about Raspberry Pi programming, servo motor control, motion detection, camera integration, and computer vision. I also gained experience troubleshooting hardware and software issues, debugging code, and integrating multiple components into a single system. These skills helped me understand how engineers combine electronics, programming, and problem-solving to create automated systems.
+</p>
+
+<h2>Future Learning Goals</h2>
+
+<p>
+After completing this project, I hope to learn more about computer vision and artificial intelligence. While my camera can currently detect and follow motion, I would like to develop systems that can recognize specific objects and people. Learning these technologies would allow me to create smarter and more advanced security systems that can better understand their surroundings and respond to different situations.
+</p>
 
 # Second Milestone
 
