@@ -83,39 +83,151 @@ For my next milestone, I plan to add two servo motors that will allow both the c
 <img src="ver3.png" alt="Circuit Schematics">
 
 # Code
-Here's where you'll put your code. The syntax below places it into a block of code. Follow the guide [here]([url](https://www.markdownguide.org/extended-syntax/)) to learn how to customize it to your project needs. 
 
 ```python
-from gpiozero import MotionSensor
-from picamzero import Camera
-from datetime import datetime
+import cv2
 import time
+from datetime import datetime
+from gpiozero import MotionSensor
+from adafruit_servokit import ServoKit
 
+INVERT_PAN = False   
+INVERT_TILT = False  
+
+kit = ServoKit(channels=16)
 pir = MotionSensor(27)
-cam = Camera()
 
-print("Ready!")
+HOME_PAN = 90
+HOME_TILT = 150
+pan_angle = HOME_PAN
+tilt_angle = HOME_TILT
+
+def move_servos(pan, tilt):
+    global pan_angle, tilt_angle
+    pan_angle = max(0, min(180, pan))
+    tilt_angle = max(0, min(180, tilt))
+    kit.servo[0].angle = pan_angle
+    kit.servo[1].angle = tilt_angle
+
+move_servos(HOME_PAN, HOME_TILT)
+print("System Armed. Waiting for motion...")
 
 while True:
-    time.sleep(3)
     pir.wait_for_motion()
-    print("Motion detected!")
+    print("Motion detected! Initializing consecutive tracking...")
     
-    # 1. Generate a brand NEW unique filename with the exact timestamp
+    cap = cv2.VideoCapture(0, cv2.CAP_V4L2)
+    if not cap.isOpened():
+        print("Camera busy, retrying...")
+        time.sleep(2)
+        continue
+        
+    width, height = 320, 240
+    cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
+    cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
+    
+    time.sleep(2.0) # Allow auto-exposure to lock in
+    
     current_time = datetime.now()
-    filename = f"{current_time:%Y-%m-%d_%H-%M-%S}"
+    filename = f"{current_time:%Y-%m-%d_%H-%M-%S}.mp4"
+    fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+    out = cv2.VideoWriter(filename, fourcc, 15.0, (width, height))
     
-    # 2. Start recording to this unique file
-    cam.start_recording(filename)
+    for _ in range(5):
+        cap.read()
+        
+    ret, frame1 = cap.read()
+    last_motion_time = time.time()
     
-    # 3. Wait for them to stop moving, THEN record for an extra 5 seconds
-    pir.wait_for_no_motion()
-    print("Motion stopped. Recording 5 more seconds.")
-    time.sleep(5)
+    while cap.isOpened():
+        ret, frame2 = cap.read()
+        if not ret or frame2 is None:
+            continue
+            
+        debug_frame = frame2.copy()
+        
+        diff = cv2.absdiff(frame1, frame2)
+        gray = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
+        blur = cv2.GaussianBlur(gray, (5, 5), 0)
+        
+        _, thresh = cv2.threshold(blur, 30, 255, cv2.THRESH_BINARY)
+        dilated = cv2.dilate(thresh, None, iterations=3)
+        contours, _ = cv2.findContours(dilated, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        
+        contours = sorted(contours, key=cv2.contourArea, reverse=True)
+        servo_moved = False
+        
+        cv2.rectangle(debug_frame, (110, 80), (210, 160), (255, 0, 0), 1)
+        
+        for contour in contours:
+            area = cv2.contourArea(contour)
+            
+            if area < 800 or area > 30000:
+                continue
+                
+            last_motion_time = time.time()
+            
+            (x, y, w, h) = cv2.boundingRect(contour)
+            center_x = x + (w // 2)
+            center_y = y + (h // 2)
+            
+            cv2.rectangle(debug_frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
+            cv2.circle(debug_frame, (center_x, center_y), 5, (0, 0, 255), -1)
+            cv2.putText(debug_frame, f"Area: {int(area)}", (x, y - 10), 
+                        cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 255, 0), 1)
+            
+            if center_x < 110:
+                pan_step = -4 if not INVERT_PAN else 4
+                pan_angle += pan_step
+                servo_moved = True
+                cv2.putText(debug_frame, "<-- TRACKING LEFT", (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+            elif center_x > 210:
+                pan_step = 4 if not INVERT_PAN else -4
+                pan_angle += pan_step
+                servo_moved = True
+                cv2.putText(debug_frame, "TRACKING RIGHT -->", (150, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+                
+            if center_y < 80:
+                tilt_step = -4 if not INVERT_TILT else 4
+                tilt_angle += tilt_step
+                servo_moved = True
+            elif center_y > 160:
+                tilt_step = 4 if not INVERT_TILT else -4
+                tilt_angle += tilt_step
+                servo_moved = True
+                
+            if servo_moved:
+                move_servos(pan_angle, tilt_angle)
+                out.write(debug_frame)
+                
+                time.sleep(0.35)
+                for _ in range(6):
+                    cap.read()
+                ret, frame2 = cap.read()
+                if ret and frame2 is not None:
+                    frame1 = frame2.copy()
+                    debug_frame = frame2.copy()
+            break
+            
+        out.write(debug_frame)
+        
+        if not servo_moved:
+            frame1 = frame2
+        
+        if time.time() - last_motion_time > 10.0:
+            print("No movement for 10 seconds. Saving video.")
+            break
+            
+        time.sleep(0.02)
+
+    out.release()
+    cap.release()
+    cv2.destroyAllWindows()
     
-    # 4. Safely close and seal the video file
-    cam.stop_recording()
-    print(f"Video saved successfully as {filename}.mp4")
+    print(f"Saved video: {filename}")
+    move_servos(HOME_PAN, HOME_TILT)
+    time.sleep(4.0)
+    print("Ready!")
 ```
 
 # Bill of Materials
